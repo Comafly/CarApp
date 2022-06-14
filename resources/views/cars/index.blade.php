@@ -4,12 +4,20 @@
             <h2 class="flex-1 font-semibold text-xl text-gray-800 leading-tight">
                 {{ __('Cars') }}
             </h2>
-            <div>
+
                 <a href="{{ route('cars.create') }}"
-                   class="flex-0 rounded text-stone-100 bg-stone-500 p-1 mx-2">
+                   class="flex-0 rounded text-stone-100 bg-stone-500 p-1 mx-2 my-2">
                     {{ __("Add Car") }}
                 </a>
-            </div>
+
+                <div>
+                    <form method="get" action="{{ route('cars.index')}}">
+                        <label for="search">Search:</label>
+                        <input type="text" id="search" name="search" placeholder="Enter search term">
+                        <button class="flex-0 rounded text-stone-100 bg-stone-500 p-1 mx-2 my-2" type="submit" name="go">GO!</button>
+                    </form>
+                </div>
+
         </div>
     </x-slot>
 

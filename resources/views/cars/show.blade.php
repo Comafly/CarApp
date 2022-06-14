@@ -51,6 +51,18 @@
                         </p>
                     </div>
 
+
+                    <div class="flex w-full my-6 ">
+                        <p class="w-32 text-stone-500">Collectors</p>
+                        <p class="flex-1 flex -ml-1 text-sm gap-1">
+
+                            @foreach($car->find_collectors() as $collector)
+                                <span class="p-1 px-2 rounded-full bg-stone-200 text-900">{{ $collector }}</span>
+                            @endforeach
+
+                        </p>
+                    </div>
+
                     <div class="flex w-full my-6 gap-4">
                         <p for="" class="w-32"></p>
 

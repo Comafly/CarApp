@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCarRequest;
 use App\Http\Requests\UpdateCarRequest;
 use App\Models\Car;
+use App\Models\Collector;
+use function Sodium\add;
 
 class CarController extends Controller
 {
@@ -15,7 +17,19 @@ class CarController extends Controller
      */
     public function index()
     {
-        $cars = Car::paginate(10);
+
+        $request = Request()->all();
+        $searchFor = $request['search'] ?? '';
+
+        if($searchFor === ""){
+            $cars = Car::paginate(10);
+        }
+        else
+        {
+            # Get all the cars and create an array
+            $cars = Car::where('manufacturer', 'like', "%{$searchFor}%")->paginate(10);
+        }
+
         return view("cars.index", compact(['cars']));
     }
 
